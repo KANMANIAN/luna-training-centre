@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUNA Training Centre</title>
+<style>
+:root {
+ --site-primary:#142B52;
+ --site-secondary:#D9AD50;
+ --site-background:#F7F8FC;
+ --site-on-primary:#FFFFFF;
+ --site-on-secondary:#17233A;
+ --site-on-background:#18243A;
+ --site-font-body: "Segoe UI", Arial, sans-serif;
+ --site-font-heading: "Segoe UI", Arial, sans-serif;
+ --site-heading-scale:1;
+ --site-spacing-scale:1;
+ --site-radius-scale:1;
+ --site-decoration-opacity:1;
+ --ink:#18243A; --muted:#667085; --surface:#FFFFFF; --line:#E5E9F2; --gold:#D9AD50;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:var(--site-font-body);color:var(--ink);background:light-dark(#F7F8FC,#101827)}
+#app{background-color:var(--site-background);color:var(--site-on-background);min-height:100vh;border-radius:0;overflow:hidden}
+a{color:inherit;text-decoration:none} .container{width:min(1120px,92%);margin:auto}
+.topbar{background:var(--site-primary);color:var(--site-on-primary);font-size:13px;padding:10px 0}.topbar .container{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+header{background:light-dark(#fff,#182236);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10} .nav{min-height:82px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:.3px;color:light-dark(var(--site-primary),#fff)} .logo{width:48px;height:48px;border-radius:50%;background:var(--site-primary);border:2px solid var(--site-secondary);display:grid;place-items:center;color:#fff;font-weight:900;font-size:18px;box-shadow:0 0 0 4px #d9ad5020}.brand small{display:block;font-size:11px;color:var(--site-secondary);letter-spacing:2px;margin-top:3px}
+nav{display:flex;align-items:center;gap:24px;font-size:14px;font-weight:650;color:light-dark(#344054,#dbe4f5)}nav a:hover{color:var(--site-secondary)}.btn{display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:calc(12px * var(--site-radius-scale));padding:13px 19px;font-weight:750;cursor:pointer;transition:.2s;font-size:14px}.btn-primary{background:var(--site-secondary);color:#17233A;box-shadow:0 8px 22px #d9ad5030}.btn-primary:hover{transform:translateY(-2px);filter:brightness(1.04)}.btn-outline{border:1px solid #ffffff70;color:#fff;background:transparent}.menu-btn{display:none;background:transparent;border:1px solid var(--line);border-radius:10px;padding:9px 12px;font-size:22px;color:inherit}
+.hero{background:var(--site-primary);color:#fff;position:relative;padding:80px 0 84px;isolation:isolate}.hero:before,.hero:after{content:"";position:absolute;border:1px solid #ffffff12;border-radius:50%;z-index:-1;opacity:var(--site-decoration-opacity)}.hero:before{width:440px;height:440px;right:-120px;top:-160px}.hero:after{width:300px;height:300px;right:60px;bottom:-190px}.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}.eyebrow{display:inline-flex;gap:9px;align-items:center;text-transform:uppercase;letter-spacing:2px;font-size:12px;font-weight:800;color:var(--site-secondary);margin-bottom:18px}.eyebrow:before{content:"";width:28px;height:2px;background:var(--site-secondary)}h1,h2,h3{font-family:var(--site-font-heading);line-height:1.12;margin:0 0 18px}h1{font-size:clamp(38px,5vw,64px);letter-spacing:-1.8px}h1 span{color:var(--site-secondary)}.hero p{font-size:17px;line-height:1.8;color:#D9E2F1;max-width:580px;margin:0 0 28px}.hero-actions{display:flex;gap:13px;flex-wrap:wrap}.hero-note{margin-top:27px;font-size:13px;color:#c9d3e4}.hero-card{background:linear-gradient(145deg,#fff,#f0f3fa);color:#17233a;border-radius:24px;padding:28px;box-shadow:0 25px 65px #050d1b55;transform:rotate(1deg)}.hero-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}.mini-mark{width:42px;height:42px;border-radius:14px;background:var(--site-primary);color:#fff;border:2px solid var(--site-secondary);display:grid;place-items:center;font-weight:900}.pill{font-size:11px;background:#fff3d6;color:#795719;padding:7px 10px;border-radius:20px;font-weight:800}.hero-card h3{font-size:25px;margin-bottom:7px}.hero-card p{color:#667085;font-size:14px;margin-bottom:20px;line-height:1.6}.quick-list{display:grid;gap:11px}.quick-item{display:flex;align-items:center;gap:12px;background:#fff;padding:13px;border:1px solid #e8ebf2;border-radius:13px;font-weight:700;font-size:13px}.quick-item b{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:#edf1f8;color:#17325c;font-size:17px}
+.stats{margin-top:-28px;position:relative;z-index:2}.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);background:var(--surface);border-radius:18px;box-shadow:0 14px 45px #15284a12;border:1px solid var(--line);overflow:hidden}.stat{padding:24px;text-align:center;border-right:1px solid var(--line)}.stat:last-child{border:0}.stat strong{display:block;font-size:25px;color:var(--site-primary);margin-bottom:5px}.stat span{font-size:12px;color:var(--muted);font-weight:650}
+section{padding:84px 0}.section-head{text-align:center;max-width:680px;margin:0 auto 42px}.section-head .eyebrow{justify-content:center}.section-head h2{font-size:clamp(29px,4vw,42px);color:light-dark(var(--site-primary),#fff);letter-spacing:-.8px}.section-head p{line-height:1.75;color:var(--muted);margin:0}.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:light-dark(#fff,#182236);border:1px solid var(--line);border-radius:18px;padding:26px;transition:.2s}.card:hover{transform:translateY(-5px);box-shadow:0 18px 38px #172b4d12;border-color:#d9ad5077}.icon{width:52px;height:52px;border-radius:15px;background:#edf2fa;color:var(--site-primary);display:grid;place-items:center;font-size:25px;margin-bottom:20px}.card h3{font-size:20px;color:light-dark(var(--site-primary),#fff);margin-bottom:10px}.card p{font-size:14px;line-height:1.7;color:var(--muted);margin:0 0 15px}.tag{display:inline-block;background:#fff4da;color:#765719;padding:7px 10px;border-radius:8px;font-size:11px;font-weight:800}
+.about{background:light-dark(#EEF2F9,#131e30)}.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}.about-visual{min-height:360px;background:var(--site-primary);border-radius:24px;padding:32px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;position:relative;overflow:hidden}.about-visual:after{content:"LUNA";position:absolute;font-size:110px;font-weight:900;letter-spacing:-5px;right:-14px;bottom:22px;color:#ffffff0b}.about-visual .big-mark{font-size:56px;font-weight:900;color:var(--site-secondary);letter-spacing:3px}.about-visual .quote{font-size:25px;font-weight:750;line-height:1.4;max-width:280px;z-index:1}.about-visual .since{font-size:12px;letter-spacing:2px;color:#e7d4a5}.about-copy h2{font-size:clamp(30px,4vw,42px);color:light-dark(var(--site-primary),#fff)}.about-copy p{color:var(--muted);line-height:1.85}.check-list{list-style:none;padding:0;margin:22px 0;display:grid;gap:13px}.check-list li{display:flex;gap:10px;align-items:flex-start;font-weight:650;font-size:14px}.check-list li:before{content:"✓";flex:0 0 23px;height:23px;border-radius:50%;display:grid;place-items:center;background:#e4f4e9;color:#217342;font-size:13px}
+.services .card{padding:23px}.services .icon{margin-bottom:15px}.contact-band{background:var(--site-primary);color:#fff;padding:55px 0}.contact-inner{display:flex;align-items:center;justify-content:space-between;gap:25px}.contact-inner h2{font-size:clamp(25px,3.5vw,36px);margin-bottom:9px}.contact-inner p{color:#d1daea;margin:0;line-height:1.6}.contact{background:light-dark(#fff,#101827)}.contact-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px}.contact-info h2{font-size:36px;color:light-dark(var(--site-primary),#fff)}.contact-info>p{color:var(--muted);line-height:1.8}.info-row{display:flex;gap:13px;margin-top:22px;align-items:flex-start}.info-icon{width:42px;height:42px;flex:0 0 42px;background:#edf2fa;border-radius:12px;display:grid;place-items:center;color:var(--site-primary);font-size:18px}.info-row strong{display:block;font-size:14px;margin:2px 0 5px}.info-row span{font-size:13px;color:var(--muted);line-height:1.6;overflow-wrap:anywhere}.contact-form{background:light-dark(#f7f8fc,#182236);border:1px solid var(--line);border-radius:20px;padding:28px}.contact-form h3{font-size:23px;color:light-dark(var(--site-primary),#fff)}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}.field label{font-size:12px;font-weight:750;color:light-dark(#344054,#dbe4f5)}.field input,.field select,.field textarea{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:10px;background:light-dark(#fff,#101827);color:light-dark(#18243a,#fff);font:inherit;font-size:14px;outline:none}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--site-secondary);box-shadow:0 0 0 3px #d9ad5022}.field textarea{min-height:100px;resize:vertical}.form-note{font-size:12px;color:var(--muted);line-height:1.6;margin:13px 0 0}.form-status{font-size:13px;font-weight:700;margin-top:12px;color:#217342;display:none}
+footer{background:#0e1e38;color:#fff;padding:25px 0}.footer-inner{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}.footer-inner p{font-size:12px;color:#b9c5d8;margin:0}.footer-brand{font-weight:800;letter-spacing:1px}.footer-brand span{color:var(--site-secondary)}
+@media(max-width:850px){nav{display:none;position:absolute;top:82px;left:0;right:0;background:light-dark(#fff,#182236);padding:20px 4%;border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:18px}nav.open{display:flex}.menu-btn{display:block}.nav>.btn{display:none}.hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}.hero{padding:58px 0 70px}.hero-card{max-width:520px;transform:none}.cards{grid-template-columns:repeat(2,1fr)}.about-grid{gap:35px}.about-visual{min-height:290px}.contact-inner{align-items:flex-start;flex-direction:column}}
+@media(max-width:560px){.topbar .container{justify-content:center;text-align:center}.topbar .container span:last-child{display:none}.nav{min-height:72px}.brand{font-size:13px}.logo{width:42px;height:42px}.brand small{font-size:9px}nav{top:72px}.hero{padding:47px 0 60px}h1{font-size:39px}.hero p{font-size:15px}.stat-grid{grid-template-columns:repeat(2,1fr)}.stat:nth-child(2){border-right:0}.stat:nth-child(-n+2){border-bottom:1px solid var(--line)}.stat{padding:19px 10px}.stat strong{font-size:22px}section{padding:62px 0}.cards{grid-template-columns:1fr}.card{padding:23px}.section-head{margin-bottom:30px}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.contact-form{padding:21px}.hero-actions .btn{width:100%}}
+</style>
+</head>
+<body>
+<div id="app">
+<header><div class="container nav"><a class="brand" href="#home" aria-label="LUNA Training Centre home"> <img
+  src="logo.jpeg"
+  alt="LUNA Training Centre Logo"
+  class="logo"
+></span><span>LUNA TRAINING CENTRE<small>LEARN TO TEACH</small></span></a><nav id="nav"><a href="#home">Home</a><a href="#courses">Courses</a><a href="#services">Digital Services</a><a href="#E-sevai">E-Sevai</a><a href="#contact">Contact</a><a href="#ourteam">OurTeam</a></nav><a class="btn btn-primary" href="#contact">Enquire Now ↗</a><a href="#about">About Us</a><button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button></div></header>
+<!--<div class="topbar"><div class="container"><span>📍 RAHUMANIYAPURAM 3RD STREET, Kadayanallur</span><span>Learn • Develop • Achieve</span></div></div>-->
+<main>
+<section class="hero" id="home"><div class="container hero-grid"><div><div class="eyebrow">Your learning journey starts here</div><h1>Learn Today.<br><span>Lead Tomorrow.</span></h1><p>Build strong academic foundations, develop practical skills, and discover new opportunities at LUNA Training Centre in Kadayanallur.</p><div class="hero-actions"><a class="btn btn-primary" href="#courses">Explore Our Courses →</a><a class="btn btn-outline" href="#about">Discover LUNA</a></div><div class="hero-note">✦ Quality Education &nbsp; ✦ Skill Development &nbsp; ✦ Digital Services & E-Services</div></div>
+<div class="hero-card"><div class="hero-card-top"><div class="mini-mark">L</div><span class="pill">EST.2024</span></div><h3>A brighter future begins with learning.</h3><p>Supportive teaching, practical learning, and useful digital services—all in one place.</p><div class="quick-list"><div class="quick-item"><b>📚</b><span>School Tuition · Classes 1–10</span></div><div class="quick-item"><b>📊</b><span>Commerce & Accountancy · 11–12</span></div><div class="quick-item"><b>💻</b><span>Computer Skills & Digital Services</span></div></div></div></div></section>
+<div class="stats"><div class="container stat-grid"><div class="stat"><strong>2024</strong><span>Established</span></div><div class="stat"><strong>1–10</strong><span>School Tuition</span></div><div class="stat"><strong>11–12</strong><span>Commerce Stream</span></div><div class="stat"><strong>Learn</strong><span>Skills for Life</span></div></div></div>
+<section id="courses"><div class="container"><div class="section-head"><div class="eyebrow">Learning opportunities</div><h2>Courses That Help You Grow</h2><p>Build confidence in your studies and develop the skills you need for your next step.</p></div><div class="cards"><article class="card"><div class="icon">📘</div><h3>School Tuition</h3><p>Academic support for students from 1st to 10th standard, with attention to subject understanding and practice.</p><span class="tag">CLASSES 1–10</span></article><article class="card"><div class="icon">📈</div><h3>Commerce & Accountancy</h3><p>Focused learning in Accountancy, Commerce, and Economics for higher-secondary students.</p><span class="tag">CLASSES 11 & 12</span></article><article class="card"><div class="icon">📖</div><h3>Reading & Writing Skills</h3><p>Build reading confidence, improve handwriting, practise writing, and strengthen language foundations.</p><span class="tag">SKILL DEVELOPMENT</span></article><article class="card"><div class="icon">⌨️</div><h3>Basic Computer Typing</h3><p>Learn keyboard basics, typing practice, and essential computer skills for everyday use.</p><span class="tag">PRACTICAL LEARNING</span></article><article class="card"><div class="icon">🖥️</div><h3>Computer Training</h3><p>Develop useful digital skills through beginner-friendly computer training and guided practice.</p><span class="tag">DIGITAL SKILLS</span></article><article class="card"><div class="icon">🎓</div><h3>Student Internship Programs</h3><p>Explore learning opportunities designed to introduce students to practical tasks and workplace skills.</p><span class="tag">STUDENT DEVELOPMENT</span></article></div></div></section>
+
+<section class="about" id="about"><div class="container about-grid"><div class="about-visual"><div><div class="big-mark">LUNA</div><div class="since">TRAINING CENTRE · KADAYANALLUR</div></div><div class="quote">“Learn with purpose.<br>Grow with confidence.”</div></div><div class="about-copy"><div class="eyebrow">About our centre</div><h2>Education, Skills & Services for Everyone</h2><p>LUNA Training Centre is an academic and vocational learning centre established in 2024. We aim to empower our local community through quality education, skill development, and essential digital services.</p><p>Our goal is to create a welcoming place where learners can strengthen their knowledge, practise new skills, and take confident steps toward their goals.</p><ul class="check-list"><li>Student-focused academic support</li><li>Practical computer and typing training</li><li>Reading and writing improvement practice</li><li>Convenient document and digital services</li></ul><a class="btn btn-primary" href="#contact">Talk to Our Team →</a></div></div></section>
+<section class="services" id="services"><div class="container"><div class="section-head"><div class="eyebrow">Helpful everyday support</div><h2>Digital & Document Services</h2><p>Convenient document services to support your study, work, and everyday needs.</p></div><div class="cards"><article class="card"><div class="icon">🖨️</div><h3>Xerox & Printing</h3><p>Document photocopying and printing services.</p></article><article class="card"><div class="icon">📄</div><h3>Lamination</h3><p>Help protect certificates, cards, and important documents.</p></article><article class="card"><div class="icon">📚</div><h3>Spiral Binding</h3><p>Binding support for projects, notes, and printed documents.</p></article></div></div></section>
+<!-- OUR TEAM SECTION -->
+<section id="ourteam">
+    <div class="container">
+
+        <div class="section-head">
+            <div class="eyebrow">Meet the people behind LUNA</div>
+            <h2>Our Team</h2>
+            <p>
+                Meet our leadership and trainers, dedicated to supporting
+                learners and helping them grow with confidence.
+            </p>
+        </div>
+
+        <div class="cards">
+
+            <!-- Founder -->
+            <article class="card">
+                <div class="icon">👨‍💼</div>
+                <h3>M. Arunkumar</h3>
+                <p>Founder</p>
+            </article>
+
+            <!-- Co-Founder -->
+            <article class="card">
+                <div class="icon">👩‍💼</div>
+                <h3>N. Karpagavalli</h3>
+                <p>Co-Founder</p>
+            </article>
+
+            <!-- Senior Trainer -->
+            <article class="card">
+                <div class="icon">👩‍🏫</div>
+                <h3>Azeela</h3>
+                <p>Senior Trainer</p>
+            </article>
+
+            <!-- Trainer -->
+            <article class="card">
+                <div class="icon">👩‍🏫</div>
+                <h3>Sajitha</h3>
+                <p>Trainer</p>
+            </article>
+
+            <!-- Trainer -->
+            <article class="card">
+                <div class="icon">👩‍🏫</div>
+                <h3>Thoufika</h3>
+                <p>Trainer</p>
+            </article>
+
+        </div>
+    </div>
+</section>
+<!-- E-Sevai Services Section -->
+<section class="services" id="E-sevai">
+  <div class="container">
+
+    <div class="section-head">
+      <div class="eyebrow">Online public service assistance</div>
+      <h2>E-Sevai Services</h2>
+      <p>
+        Friendly assistance with online applications and digital
+        document-related services.
+      </p>
+    </div>
+
+    <div class="cards">
+
+      <!-- Certificate Applications -->
+      <article class="card">
+        <div class="icon">📑</div>
+        <h3>Certificate Applications</h3>
+        <p>
+          Guidance with online applications for eligible certificates,
+          such as income, community, and nativity certificates.
+        </p>
+      </article>
+
+      <!-- Online Form Filling -->
+      <article class="card">
+        <div class="icon">📝</div>
+        <h3>Online Form Filling</h3>
+        <p>
+          Assistance entering information into online forms and
+          checking that required details are ready.
+        </p>
+      </article>
+
+      <!-- Document Upload Support -->
+      <article class="card">
+        <div class="icon">🖥️</div>
+        <h3>Document Upload Support</h3>
+        <p>
+          Help preparing and uploading digital documents for
+          supported online applications.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+<div class="contact-band"><div class="container contact-inner"><div><h2>Ready to take the next step?</h2><p>Ask us about courses, batches, or digital services at LUNA Training Centre.</p></div><a class="btn btn-primary" href="#contact">Get in Touch ↗</a></div></div>
+
+<section class="contact" id="contact"><div class="container contact-grid"><div class="contact-info"><div class="eyebrow">We’d love to hear from you</div><h2>Contact LUNA</h2><p>Send us an enquiry and tell us what you would like to learn. We’ll help you find the right place to start.</p><div class="info-row"><div class="info-icon">📍</div><div><strong>Visit Our Centre</strong><span>Rahumaniyapuram 3rd Street,<br>Krishnapuram, Kadayanallur, Tamil Nadu</span></div></div><div class="info-row"><div class="info-icon">✉️</div><div><strong>Email Us</strong><span>lunahub2025@gmail.com</span></div></div><div class="info-row"><div class="info-icon">🕘</div><div><strong>Course Enquiries</strong><span>Contact us for current batches, timings, and availability.</span></div></div></div><form class="contact-form" id="enquiryForm"><h3>Send an Enquiry</h3><div class="form-grid"><div class="field"><label for="name">Your Name</label><input id="name" name="name" required placeholder="Enter your name"></div><div class="field"><label for="phone">Phone Number</label><input id="phone" name="phone" type="tel" required placeholder="Enter phone number"></div><div class="field full"><label for="course">Interested In</label><select id="course" name="course" required><option value="">Choose a course or service</option><option>School Tuition (Classes 1–10)</option><option>Accountancy / Commerce / Economics (11–12)</option><option>Reading & Writing Skills</option><option>Basic Computer Typing</option><option>Computer Training</option><option>Student Internship Program</option><option>Xerox / Printing / Lamination / Binding</option><option>Other Enquiry</option></select></div><div class="field full"><label for="message">Message (optional)</label><textarea id="message" name="message" placeholder="Tell us how we can help"></textarea></div><div class="field full"><button class="btn btn-primary" type="submit">Prepare Enquiry Message ↗</button></div></div><p class="form-note">This preview prepares an enquiry message for you to copy. It does not send or store your details automatically.</p><div class="form-status" id="formStatus" role="status"></div></form></div></section>
+</main><footer><div class="container footer-inner"><div class="footer-brand">LUNA <span>TRAINING CENTRE</span></div><p>Learn • Develop • Achieve · Established 2024</p><p>© <span id="year"></span> LUNA Training Centre. All rights reserved.</p></div></footer>
+</div>
+<script>
+const menuBtn=document.getElementById('menuBtn');const nav=document.getElementById('nav');menuBtn.addEventListener('click',()=>{nav.classList.toggle('open');menuBtn.textContent=nav.classList.contains('open')?'✕':'☰'});nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menuBtn.textContent='☰'}));document.getElementById('year').textContent=new Date().getFullYear();
+document.getElementById('enquiryForm').addEventListener('submit',async e=>{e.preventDefault();const f=new FormData(e.target);const message=`LUNA TRAINING CENTRE — COURSE ENQUIRY\nName: ${f.get('name')}\nPhone: ${f.get('phone')}\nInterested in: ${f.get('course')}\nMessage: ${f.get('message')||'Not provided'}`;const status=document.getElementById('formStatus');try{await navigator.clipboard.writeText(message);status.textContent='Enquiry message copied. You can now paste it into your preferred messaging app or email.'}catch(err){status.textContent=message}status.style.display='block'});
+</script>
+</body></html>
